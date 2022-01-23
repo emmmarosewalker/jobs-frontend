@@ -42,35 +42,35 @@ function PostJobForm() {
         }
       />
       <label htmlFor="title">Title</label>
-      <input
+      <Input
         name="title"
         value={formState.title}
-        onChange={(e) =>
+        onChange={(text) =>
           setFormState({
             type: "title",
-            payload: e.target.value,
+            payload: text,
           })
         }
       />
       <label htmlFor="jobType">Job Type</label>
-      <input
+      <Input
         name="jobType"
         value={formState.jobType}
-        onChange={(e) =>
+        onChange={(text) =>
           setFormState({
             type: "jobType",
-            payload: e.target.value,
+            payload: text,
           })
         }
       />
       <label htmlFor="jobDescription">Job Description</label>
-      <input
+      <Input
         name="jobDescription"
         value={formState.jobDescription}
-        onChange={(e) =>
+        onChange={(text) =>
           setFormState({
             type: "jobDescription",
-            payload: e.target.value,
+            payload: text,
           })
         }
       />

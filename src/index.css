@@ -2,6 +2,35 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@font-face {
+  font-family: RobotoMono;
+  src: url(./fonts/RobotoMono-Light.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: RobotoMono;
+  src: url(./fonts/RobotoMono-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: RobotoMono;
+  src: url(./fonts/RobotoMono-SemiBold.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: RobotoMono;
+  src: url(./fonts/RobotoMono-Bold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: RobotoMono;
+  src: url(./fonts/RobotoMono-Italic.ttf);
+  font-style: italic;
+}
 
 html,
 body,
@@ -126,4 +155,9 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+html {
+  font-family: RobotoMono;
+  font-weight: 300;
 }
