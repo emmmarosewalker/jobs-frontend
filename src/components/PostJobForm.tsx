@@ -1,7 +1,12 @@
 import axios from "axios";
 import React, { useReducer } from "react";
-import { Input } from "../design";
+import styled from "styled-components";
+import { Box, Input, Spacing } from "../design";
 import { Listing } from "../types/listings";
+
+const FormContainer = styled(Box)`
+  max-width: 400px;
+`;
 
 export type ListingsReducerAction<T extends keyof Listing> = {
   type: T;
@@ -24,58 +29,76 @@ function PostJobForm() {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit();
-      }}
-    >
-      <label htmlFor="company">Company</label>
-      <Input
-        name="company"
-        value={formState.company}
-        onChange={(text) =>
-          setFormState({
-            type: "company",
-            payload: text,
-          })
-        }
-      />
-      <label htmlFor="title">Title</label>
-      <Input
-        name="title"
-        value={formState.title}
-        onChange={(text) =>
-          setFormState({
-            type: "title",
-            payload: text,
-          })
-        }
-      />
-      <label htmlFor="jobType">Job Type</label>
-      <Input
-        name="jobType"
-        value={formState.jobType}
-        onChange={(text) =>
-          setFormState({
-            type: "jobType",
-            payload: text,
-          })
-        }
-      />
-      <label htmlFor="jobDescription">Job Description</label>
-      <Input
-        name="jobDescription"
-        value={formState.jobDescription}
-        onChange={(text) =>
-          setFormState({
-            type: "jobDescription",
-            payload: text,
-          })
-        }
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <FormContainer>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit();
+        }}
+      >
+        <Spacing bottom="small">
+          <div>
+            <label htmlFor="company">Company</label>
+            <Input
+              name="company"
+              value={formState.company}
+              onChange={(text) =>
+                setFormState({
+                  type: "company",
+                  payload: text,
+                })
+              }
+            />
+          </div>
+        </Spacing>
+        <Spacing bottom="small">
+          <div>
+            <label htmlFor="title">Title</label>
+            <Input
+              name="title"
+              value={formState.title}
+              onChange={(text) =>
+                setFormState({
+                  type: "title",
+                  payload: text,
+                })
+              }
+            />
+          </div>
+        </Spacing>
+        <Spacing bottom="small">
+          <div>
+            <label htmlFor="jobType">Job Type</label>
+            <Input
+              name="jobType"
+              value={formState.jobType}
+              onChange={(text) =>
+                setFormState({
+                  type: "jobType",
+                  payload: text,
+                })
+              }
+            />
+          </div>
+        </Spacing>
+        <Spacing bottom="small">
+          <div>
+            <label htmlFor="jobDescription">Job Description</label>
+            <Input
+              name="jobDescription"
+              value={formState.jobDescription}
+              onChange={(text) =>
+                setFormState({
+                  type: "jobDescription",
+                  payload: text,
+                })
+              }
+            />
+          </div>
+        </Spacing>
+        <button type="submit">Submit</button>
+      </form>
+    </FormContainer>
   );
 }
 

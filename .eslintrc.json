@@ -37,6 +37,7 @@
     "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
+    "react/function-component-definition": "off",
     "no-unused-vars": "off",
     "prettier/prettier": [
       "error",

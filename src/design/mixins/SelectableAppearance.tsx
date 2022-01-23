@@ -40,7 +40,6 @@ const SelectableAppearance = css<SelectableProps>`
 
 const ControlContainer = styled.div`
   display: flex;
-  font-family: ${(props) => props.theme.fonts.body};
 `;
 
 const Label = styled.label`

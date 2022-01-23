@@ -12,11 +12,6 @@ const theme = {
     text: "#57617C",
     inputFocused: "#bbcbff",
   },
-  fonts: {
-    body: '"Inter", system-ui, sans-serif',
-    heading: '"Inter", system-ui, sans-serif',
-    monospace: '"Inter", system-ui, sans-serif',
-  },
   fontWeights: {
     normal: 400,
     medium: 500,

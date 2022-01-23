@@ -4,7 +4,6 @@ const Table: any = styled.table`
   min-width: 100%;
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors.grey};
-  font-family: ${(props) => props.theme.fonts.body};
   background-color: ${(props) => props.theme.colors.white};
   border-spacing: 0;
 `;

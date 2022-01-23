@@ -33,7 +33,6 @@ const Message = styled.div`
 const Trigger = styled.span`
   position: relative;
   cursor: pointer;
-  font-family: ${(props) => props.theme.fonts.body};
 
   &:hover ${Message} {
     visibility: visible;

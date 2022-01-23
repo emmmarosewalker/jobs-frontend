@@ -33,14 +33,12 @@ const disabledButtonProps = (props: any) => ({
 const Button = styled.button<ButtonProps>`
   ${space};
   ${color};
-  ${typography};
   ${layout};
   border: none;
   font-size: 1rem;
   display: inline-block;
   padding: 0.5rem 0.75rem;
   color: ${(props) => props.theme.colors.heading};
-  font-family: ${(props) => props.theme.fonts.body};
   cursor: pointer;
   font-weight: ${(props) => props.theme.fontWeights.semiBold};
   background-color: transparent;

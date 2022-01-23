@@ -1,15 +1,22 @@
 import React from "react";
+import Header from "./components/Header";
 import JobListings from "./components/JobListings";
-import PostJobForm from "./components/PostJobForm";
-import { theme, ThemeProvider } from "./design";
+import { Container, theme, ThemeProvider } from "./design";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <JobListings />
-        <PostJobForm />
-      </div>
+      <Header />
+      <Container>
+        <div>
+          <JobListings />
+          {/* <Spacing top="large">
+            <div>
+              <PostJobForm />
+            </div>
+          </Spacing> */}
+        </div>
+      </Container>
     </ThemeProvider>
   );
 }

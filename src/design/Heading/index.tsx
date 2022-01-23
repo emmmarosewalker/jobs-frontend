@@ -17,7 +17,6 @@ const Heading = styled.h1<HeadingProps>`
   ${typography};
   ${layout};
   font-size: ${(props) => HEADING_SIZES[props.size || "xl"]};
-  font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
   color: ${(props) => props.theme.colors.heading};
   letter-spacing: 0.02rem;

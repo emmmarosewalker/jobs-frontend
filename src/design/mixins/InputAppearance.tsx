@@ -16,7 +16,6 @@ const InputAppearance = css<InputAppearanceProps>`
   border-radius: 0.25rem;
   padding: 0.625rem 1rem;
   font-size: 1rem;
-  font-family: ${(props) => props.theme.fonts.body};
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
 

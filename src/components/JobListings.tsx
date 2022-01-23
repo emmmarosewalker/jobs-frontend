@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Spacing } from "../design";
 import { Listing } from "../types/listings";
 import ListingCard from "./ListingCard";
 
@@ -13,9 +14,16 @@ function JobListings() {
   }, []);
 
   return (
-    <div>
+    <div style={{ margin: "auto", maxWidth: 700 }}>
+      <Spacing bottom="small">
+        <h2>Current Openings</h2>
+      </Spacing>
       {listings?.map((listing) => (
-        <ListingCard listing={listing} key={listing.id} />
+        <Spacing bottom="medium">
+          <div>
+            <ListingCard listing={listing} key={listing.id} />
+          </div>
+        </Spacing>
       ))}
     </div>
   );
