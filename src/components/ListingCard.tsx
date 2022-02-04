@@ -1,16 +1,12 @@
+import { Box, Card, Typography } from "@mui/material";
+import { format } from "date-fns";
 import React from "react";
 import styled from "styled-components";
-import { format } from "date-fns";
-import { Box, Spacing } from "../design";
 import { Listing } from "../types/listings";
 
 type Props = {
   listing: Listing;
 };
-
-const StyledListingInfoItem = styled.div`
-  display: flex;
-`;
 
 const omitKeys = ["id", "title", "company", "streetAddress"] as const;
 const omitKeyValues = ["id", "title", "company", "streetAddress"];
@@ -52,26 +48,24 @@ const ListingInfoItem = ({
   value: string | null;
 }) =>
   !value ? null : (
-    <Spacing bottom="x-small">
-      <StyledListingInfoItem>
-        <div style={{ width: "40%" }}>
-          <h4>{getTitleFromListingKey(title)}</h4>
-        </div>
-        <div style={{ width: "60%" }}>
-          <p>{formatInfoValue(title, value)}</p>
-        </div>
-      </StyledListingInfoItem>
-    </Spacing>
+    <Box sx={{ display: "flex", mb: 1 }}>
+      <div style={{ width: "40%" }}>
+        <Typography variant="subtitle2">
+          {getTitleFromListingKey(title)}
+        </Typography>
+      </div>
+      <div style={{ width: "60%" }}>
+        <Typography variant="body1">{formatInfoValue(title, value)}</Typography>
+      </div>
+    </Box>
   );
 
 function ListingCard({ listing }: Props) {
   return (
-    <Box>
-      <Spacing bottom="small">
-        <h3>
-          {listing.title} @ {listing.company}
-        </h3>
-      </Spacing>
+    <Card sx={{ padding: 3, boxShadow: 3, borderRadius: 3 }}>
+      <Typography variant="h3" sx={{ mb: 2 }}>
+        {listing.title} @ {listing.company}
+      </Typography>
       {Object.keys(listing)
         .filter((key) => !omitKeyValues.includes(key))
         .map((key) => (
@@ -80,7 +74,7 @@ function ListingCard({ listing }: Props) {
             value={listing[key as DisplayKey]}
           />
         ))}
-    </Box>
+    </Card>
   );
 }
 

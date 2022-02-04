@@ -1,8 +1,9 @@
+import { Box, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Spacing } from "../design";
 import { Listing } from "../types/listings";
 import ListingCard from "./ListingCard";
+import PostJobForm from "./PostJobForm";
 
 function JobListings() {
   const [listings, setListings] = useState<Listing[]>();
@@ -14,18 +15,17 @@ function JobListings() {
   }, []);
 
   return (
-    <div style={{ margin: "auto", maxWidth: 700 }}>
-      <Spacing bottom="small">
-        <h2>Current Openings</h2>
-      </Spacing>
+    <Box sx={{ margin: "auto", maxWidth: 700 }}>
+      <Typography sx={{ mb: 3 }} variant="h2">
+        Current Openings
+      </Typography>
       {listings?.map((listing) => (
-        <Spacing bottom="medium">
-          <div>
-            <ListingCard listing={listing} key={listing.id} />
-          </div>
-        </Spacing>
+        <Box sx={{ mb: 3 }}>
+          <ListingCard listing={listing} key={listing.id} />
+        </Box>
       ))}
-    </div>
+      <PostJobForm />
+    </Box>
   );
 }
 

@@ -1,22 +1,20 @@
+import { Box, createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
+import AppFooter from "./components/Footer";
 import Header from "./components/Header";
 import JobListings from "./components/JobListings";
-import { Container, theme, ThemeProvider } from "./design";
+import { themeOptions } from "./theme";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Container>
-        <div>
+    <ThemeProvider theme={createTheme(themeOptions)}>
+      <Box>
+        <Header />
+        <Box sx={{ mt: 6, mb: 6 }}>
           <JobListings />
-          {/* <Spacing top="large">
-            <div>
-              <PostJobForm />
-            </div>
-          </Spacing> */}
-        </div>
-      </Container>
+        </Box>
+        <AppFooter />
+      </Box>
     </ThemeProvider>
   );
 }

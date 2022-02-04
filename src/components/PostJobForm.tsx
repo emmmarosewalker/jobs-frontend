@@ -1,12 +1,7 @@
+import { Box, Button, Card, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useReducer } from "react";
-import styled from "styled-components";
-import { Box, Input, Spacing } from "../design";
 import { Listing } from "../types/listings";
-
-const FormContainer = styled(Box)`
-  max-width: 400px;
-`;
 
 export type ListingsReducerAction<T extends keyof Listing> = {
   type: T;
@@ -29,76 +24,70 @@ function PostJobForm() {
   };
 
   return (
-    <FormContainer>
+    <Card sx={{ padding: 3, boxShadow: 3, borderRadius: 3 }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onSubmit();
         }}
       >
-        <Spacing bottom="small">
-          <div>
-            <label htmlFor="company">Company</label>
-            <Input
-              name="company"
-              value={formState.company}
-              onChange={(text) =>
-                setFormState({
-                  type: "company",
-                  payload: text,
-                })
-              }
-            />
-          </div>
-        </Spacing>
-        <Spacing bottom="small">
-          <div>
-            <label htmlFor="title">Title</label>
-            <Input
-              name="title"
-              value={formState.title}
-              onChange={(text) =>
-                setFormState({
-                  type: "title",
-                  payload: text,
-                })
-              }
-            />
-          </div>
-        </Spacing>
-        <Spacing bottom="small">
-          <div>
-            <label htmlFor="jobType">Job Type</label>
-            <Input
-              name="jobType"
-              value={formState.jobType}
-              onChange={(text) =>
-                setFormState({
-                  type: "jobType",
-                  payload: text,
-                })
-              }
-            />
-          </div>
-        </Spacing>
-        <Spacing bottom="small">
-          <div>
-            <label htmlFor="jobDescription">Job Description</label>
-            <Input
-              name="jobDescription"
-              value={formState.jobDescription}
-              onChange={(text) =>
-                setFormState({
-                  type: "jobDescription",
-                  payload: text,
-                })
-              }
-            />
-          </div>
-        </Spacing>
-        <button type="submit">Submit</button>
+        <Box sx={{ mb: 2 }}>
+          <TextField
+            label="Company"
+            name="company"
+            value={formState.company}
+            onChange={(e) =>
+              setFormState({
+                type: "company",
+                payload: e.target.value,
+              })
+            }
+          />
+        </Box>
+        <Box sx={{ mb: 2 }}>
+          <TextField
+            label="Title"
+            name="title"
+            value={formState.title}
+            onChange={(e) =>
+              setFormState({
+                type: "title",
+                payload: e.target.value,
+              })
+            }
+          />
+        </Box>
+        <Box sx={{ mb: 2 }}>
+          <TextField
+            label="Job Type"
+            name="jobType"
+            value={formState.jobType}
+            onChange={(e) =>
+              setFormState({
+                type: "jobType",
+                payload: e.target.value,
+              })
+            }
+          />
+        </Box>
+        <Box sx={{ mb: 2 }}>
+          <TextField
+            label="Job Description"
+            name="jobDescription"
+            value={formState.jobDescription}
+            onChange={(e) =>
+              setFormState({
+                type: "jobDescription",
+                payload: e.target.value,
+              })
+            }
+          />
+        </Box>
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
       </form>
-    </FormContainer>
+    </Card>
   );
 }
 
