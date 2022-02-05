@@ -1,8 +1,8 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { format } from "date-fns";
 import React from "react";
-import styled from "styled-components";
-import { Listing } from "../types/listings";
+import StyledCard from "../../design/Cards";
+import { Listing } from "../../types/listings";
 
 type Props = {
   listing: Listing;
@@ -62,7 +62,7 @@ const ListingInfoItem = ({
 
 function ListingCard({ listing }: Props) {
   return (
-    <Card sx={{ padding: 3, boxShadow: 3, borderRadius: 3 }}>
+    <StyledCard>
       <Typography variant="h3" sx={{ mb: 2 }}>
         {listing.title} @ {listing.company}
       </Typography>
@@ -70,11 +70,12 @@ function ListingCard({ listing }: Props) {
         .filter((key) => !omitKeyValues.includes(key))
         .map((key) => (
           <ListingInfoItem
+            key={key}
             title={key as DisplayKey}
             value={listing[key as DisplayKey]}
           />
         ))}
-    </Card>
+    </StyledCard>
   );
 }
 

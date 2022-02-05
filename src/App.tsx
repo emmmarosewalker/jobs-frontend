@@ -1,8 +1,8 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
-import AppFooter from "./components/Footer";
-import Header from "./components/Header";
-import JobListings from "./components/JobListings";
+import AppFooter from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import JobListings from "./components/JobListings/JobListings";
 import { themeOptions } from "./theme";
 
 function App() {
