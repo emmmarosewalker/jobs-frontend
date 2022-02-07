@@ -9,9 +9,18 @@ type Props = {
 };
 
 const omitKeys = ["id", "title", "company", "streetAddress"] as const;
-const omitKeyValues = ["id", "title", "company", "streetAddress"];
 type OmitKeys = { [K in typeof omitKeys[number]]: number };
 type DisplayKey = keyof Omit<Listing, keyof OmitKeys>;
+
+const includeKeys = [
+  "jobType",
+  "jobDescription",
+  "category",
+  "city",
+  "country",
+  "beginDate",
+  "compensation",
+];
 
 const getTitleFromListingKey = (key: DisplayKey) =>
   ({
@@ -67,7 +76,7 @@ function ListingCard({ listing }: Props) {
         {listing.title} @ {listing.company}
       </Typography>
       {Object.keys(listing)
-        .filter((key) => !omitKeyValues.includes(key))
+        .filter((key) => includeKeys.includes(key))
         .map((key) => (
           <ListingInfoItem
             key={key}

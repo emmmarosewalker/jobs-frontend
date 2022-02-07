@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import StyledCard from "../../design/Cards";
-import Form from "../../design/Form";
 import { Listing } from "../../types/listings";
 
 type Field = {
@@ -51,8 +50,12 @@ const schema = yup
 function PostJobForm() {
   const [step, setStep] = useState<number>(0);
 
-  const onSubmit = (data: Listing) =>
-    axios.post("http://localhost:7000/listings", data);
+  const onSubmit = (data: Listing) => {
+    axios.post("http://localhost:7000/listings", {
+      ...data,
+      beginDate: data.beginDate ? new Date(data.beginDate) : null,
+    });
+  };
 
   const {
     register,
@@ -61,64 +64,65 @@ function PostJobForm() {
     formState: { errors },
   } = useForm<Listing>({
     resolver: yupResolver(schema),
-    reValidateMode: "onSubmit",
   });
 
   return (
     <StyledCard>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          {fields[step].map(({ name, label }) => (
-            <Box key={name} sx={{ mb: 2, width: "100%" }}>
-              <TextField
-                sx={{ width: "100%" }}
-                label={label}
-                error={!!errors[name]}
-                {...register(name)}
-              />
-              {errors[name] && (
-                <Typography color="error" variant="body2">
-                  {errors[name]?.message}
-                </Typography>
-              )}
-            </Box>
-          ))}
-          <Box sx={{ display: "flex" }}>
-            <Button
-              type="button"
-              disabled={step === 0}
-              onClick={() => setStep(step - 1)}
-              sx={{ mr: 2 }}
-            >
-              Back
-            </Button>
-            {step === fields.length - 1 ? (
-              <Button variant="contained" type="button">
-                Submit
-              </Button>
-            ) : (
-              <Button
-                onClick={async () => {
-                  const result = await trigger(
-                    fields[step].map(({ name }) => name)
-                  );
-                  result && setStep(step + 1);
-                }}
-                variant="contained"
-                type="button"
-              >
-                Next
-              </Button>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {fields[step].map(({ name, label }) => (
+          <Box key={name} sx={{ mb: 2, width: "100%" }}>
+            <TextField
+              sx={{ width: "100%" }}
+              label={label}
+              error={!!errors[name]}
+              {...register(name)}
+            />
+            {errors[name] && (
+              <Typography color="error" variant="body2">
+                {errors[name]?.message}
+              </Typography>
             )}
           </Box>
+        ))}
+        <Box sx={{ display: "flex" }}>
+          <Button
+            type="button"
+            disabled={step === 0}
+            onClick={() => setStep(step - 1)}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          {step === fields.length - 1 ? (
+            <Button
+              variant="contained"
+              type="button"
+              onClick={handleSubmit(onSubmit, (e) => console.log(e))}
+            >
+              Submit
+            </Button>
+          ) : (
+            <Button
+              onClick={async () => {
+                const result = await trigger(
+                  fields[step].map(({ name }) => name)
+                );
+                result && setStep(step + 1);
+              }}
+              variant="contained"
+              type="button"
+            >
+              Next
+            </Button>
+          )}
         </Box>
-      </Form>
+      </Box>
     </StyledCard>
   );
 }
