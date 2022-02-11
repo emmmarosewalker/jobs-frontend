@@ -8,8 +8,6 @@ import ListingCard from "../ListingCar/ListingCard";
 import PostJobForm from "../PostJobForm/PostJobForm";
 
 function JobListings() {
-  const [listings, setListings] = useState<Listing[]>();
-
   const res = useQuery<{ listings: Listing[] }>(GET_LISTINGS);
 
   return (

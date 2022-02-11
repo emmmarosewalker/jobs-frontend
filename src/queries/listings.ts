@@ -13,7 +13,15 @@ export const GET_LISTINGS = gql`
       city
       country
       beginDate
-      compentation
+      compensation
+    }
+  }
+`;
+
+export const ADD_LISTING = gql`
+  mutation AddListing($input: ListingInput!) {
+    addListing(input: $input) {
+      id
     }
   }
 `;

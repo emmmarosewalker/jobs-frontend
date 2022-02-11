@@ -44,6 +44,8 @@ const formatInfoValue = (key: DisplayKey, value: string) => {
         style: "currency",
         currency: "USD",
       });
+    case "jobDescription":
+      return <div dangerouslySetInnerHTML={{ __html: value }} />;
     default:
       return value;
   }
